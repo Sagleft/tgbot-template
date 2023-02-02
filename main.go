@@ -19,6 +19,10 @@ func main() {
 		log.Fatalf("decode config: %v", err)
 	}
 
+	if cfg.TelegramToken == "" {
+		log.Fatalln("telegram token is not set")
+	}
+
 	b, err := tb.NewBot(tb.Settings{
 		Token:  cfg.TelegramToken,
 		Poller: getTgPoller(),
